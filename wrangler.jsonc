@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jip-group",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "images": {
+    // next/image optimisation through Cloudflare Images (free tier: 5,000
+    // unique transformations a month). https://opennext.js.org/cloudflare/howtos/image
+    "binding": "IMAGES"
+  },
+  "vars": {
+    // The public address; keep it in step with src/lib/site.ts and the README.
+    "SITE_URL": "https://jipgroupchinnibozor1-qator16-dukon.uz"
+  },
+  "observability": { "enabled": true }
+}

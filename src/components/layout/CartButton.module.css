@@ -1,0 +1,7 @@
+.icon {
+  display: inline-flex;
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+}

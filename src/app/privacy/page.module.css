@@ -1,0 +1,52 @@
+.page {
+  padding-top: var(--space-6);
+}
+
+.body {
+  max-width: 720px;
+  color: var(--color-ink-soft);
+  line-height: 1.65;
+}
+
+.body h1 {
+  color: var(--color-ink);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-heavy);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.body h2 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-2);
+  color: var(--color-ink);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+}
+
+.body p + p,
+.body ul + p,
+.body p + ul {
+  margin-top: var(--space-3);
+}
+
+.body ul {
+  padding-left: var(--space-5);
+  list-style: disc;
+}
+
+.body li + li {
+  margin-top: var(--space-1);
+}
+
+.body a {
+  color: var(--color-accent-ink);
+  font-weight: var(--weight-semibold);
+}
+
+.updated {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}

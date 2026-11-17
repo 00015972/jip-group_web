@@ -1,0 +1,35 @@
+.hero {
+  padding-top: var(--space-5);
+}
+
+.stage {
+  position: relative;
+}
+
+.title {
+  margin-bottom: var(--space-4);
+  color: var(--color-ink);
+  font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2rem);
+  font-weight: var(--weight-heavy);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/*
+ * Over the banner's clear left third at every width; it scales with the
+ * banner (both follow the viewport), so on phones it is small but fits.
+ * Clicks and swipes pass through to the banner.
+ */
+.title.over {
+  position: absolute;
+  top: 50%;
+  left: clamp(14px, 4vw, 64px);
+  z-index: 1;
+  width: 32%;
+  margin: 0;
+  font-size: clamp(0.8125rem, 3.3vw, 3.25rem);
+  line-height: 1.12;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

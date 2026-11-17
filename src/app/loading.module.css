@@ -1,0 +1,47 @@
+.page {
+  padding-block: var(--space-8);
+}
+
+.title,
+.card {
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, var(--color-surface-muted), var(--color-surface-sunken), var(--color-surface-muted));
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.title {
+  width: 240px;
+  height: 32px;
+  margin-bottom: var(--space-6);
+}
+
+/* The same columns as the product grid: 2, 3, then 4 per row. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-3);
+}
+
+.card {
+  aspect-ratio: 1;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-10) var(--space-5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

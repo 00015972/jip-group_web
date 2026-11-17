@@ -1,0 +1,13 @@
+/* Products are packshots on white: shown whole, never cropped. */
+.image {
+  object-fit: contain;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-faint);
+  background: var(--color-photo);
+}

@@ -1,0 +1,24 @@
+# dependencies
+/node_modules
+
+# next.js / opennext / wrangler build output
+/.next/
+/out/
+/build
+/.open-next/
+/.wrangler/
+next-env.d.ts
+*.tsbuildinfo
+
+# env files hold the live storefront key
+.env*
+!.env.example
+.dev.vars*
+
+# debug
+npm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+/test-results/

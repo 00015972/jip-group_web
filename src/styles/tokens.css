@@ -1,0 +1,114 @@
+/*
+ * Design tokens: the only place colours, type, spacing, radii and shadows are
+ * defined. Components read them through their own CSS Modules.
+ *
+ * Palette: the JIP Group logo. Its deep navy for the footer and text, one
+ * bright plastic blue for the header, hero and buttons (white on it 6:1), and
+ * light grey-blue surfaces the product photos sit on.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f2f4f7;
+  --color-surface-sunken: #e6eaf0;
+  /* Product photos sit on a light grey card so mixed photos read as one set. */
+  --color-photo: #f2f4f7;
+
+  /* Text */
+  --color-ink: #0f1b33;
+  --color-ink-soft: #2b364c;
+  --color-muted: #5b6472;
+  --color-faint: #8a93a3;
+
+  /* Lines */
+  --color-border: #e3e7ee;
+  --color-border-strong: #c9d0db;
+
+  /* Brand */
+  --color-accent: #1d5bd6;
+  --color-accent-hover: #174bb3;
+  --color-accent-ink: #1d5bd6;
+  --color-accent-soft: #e8effc;
+  --color-on-accent: #ffffff;
+  /* Text on the blue header and hero */
+  --color-on-accent-muted: #eaf0fc;
+
+  /* Dark bands (footer): the logo's navy */
+  --color-dark: #0b0f3c;
+  --color-dark-raised: #161b4d;
+  --color-dark-line: #262c5e;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #aeb4cf;
+  --color-accent-on-dark: #8fb2f5;
+
+  /* States */
+  --color-success: #1f7a45;
+  --color-success-soft: #e3f3e9;
+  --color-danger: #b3261e;
+  --color-danger-soft: #fbe9e8;
+  --color-warning: #8a5300;
+  --color-warning-soft: #fdf0d9;
+
+  /* Type: Manrope throughout; Cyrillic too, for names typed in Russian */
+  --font-display: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
+  --text-display: clamp(2rem, 1.3rem + 2.8vw, 3.125rem);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-heavy: 800;
+  --tracking-label: 0.04em;
+
+  /* Spacing (4px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Shape: soft, rounded, like moulded plastic */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* Depth */
+  --shadow-sm: 0 1px 2px rgb(15 27 51 / 6%);
+  --shadow-md: 0 8px 24px rgb(15 27 51 / 10%);
+  --shadow-lg: 0 20px 50px rgb(15 27 51 / 22%);
+
+  /* Layout */
+  /* Wide pages with small side gaps: 40px on desktop, 16px on phones. */
+  --container: 1600px;
+  --gutter: clamp(16px, 2.8vw, 40px);
+  --header-height: 76px;
+  --mobile-nav-height: 64px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration: 160ms;
+
+  /* Stacking */
+  --z-header: 50;
+  --z-mobile-nav: 60;
+  --z-dropdown: 70;
+  --z-dialog: 100;
+}

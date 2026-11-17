@@ -1,0 +1,76 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.md {
+  height: 48px;
+}
+
+.sm {
+  height: 44px;
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 100%;
+  color: var(--color-accent);
+  transition: background var(--duration) var(--ease);
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+
+.sm .button {
+  width: 34px;
+}
+
+.button:disabled {
+  color: var(--color-faint);
+  cursor: not-allowed;
+}
+
+.field {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 3px;
+  min-width: 64px;
+  height: 100%;
+  padding-inline: var(--space-1);
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: auto;
+  min-width: 2ch;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.sm .input {
+  font-size: var(--text-md);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.suffix {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-muted);
+}

@@ -1,0 +1,90 @@
+.detail {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.media {
+  justify-self: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 540px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.titleBlock {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-accent-ink);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.875rem);
+  font-weight: var(--weight-heavy);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.sku {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.unavailable {
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-muted);
+}
+
+.subheading {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+}
+
+.description {
+  max-width: 68ch;
+  color: var(--color-ink-soft);
+  white-space: pre-line;
+}
+
+@media (min-width: 960px) {
+  .detail {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+    /* The last row takes the photo's extra height, so the text stays together. */
+    grid-template-rows: auto 1fr;
+    gap: 0 var(--space-10);
+    align-items: start;
+  }
+  .media {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+  .info,
+  .about {
+    grid-column: 2;
+  }
+  .about {
+    margin-top: var(--space-6);
+  }
+}

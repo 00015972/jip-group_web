@@ -1,0 +1,14 @@
+.page {
+  padding-block: var(--space-6) var(--space-12);
+}
+
+.similar {
+  margin-top: var(--space-16);
+}
+
+.similarTitle {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-heavy);
+  letter-spacing: -0.015em;
+}

@@ -1,0 +1,60 @@
+.footer {
+  margin-top: var(--space-16);
+  background: var(--color-dark);
+  color: var(--color-on-dark-muted);
+  font-size: var(--text-sm);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-6) var(--space-12);
+  padding-block: var(--space-10) calc(var(--space-10) + env(safe-area-inset-bottom));
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+
+.heading {
+  margin-bottom: var(--space-2);
+  color: var(--color-on-dark);
+  font-weight: var(--weight-bold);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.list a {
+  color: var(--color-on-dark-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-dark-line);
+}
+
+.list a:hover {
+  color: var(--color-on-dark);
+}
+
+.list a.phone {
+  color: var(--color-on-dark);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.footer :focus-visible {
+  outline-color: var(--color-on-dark);
+}
