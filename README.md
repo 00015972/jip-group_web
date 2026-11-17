@@ -61,9 +61,16 @@ optimised by Cloudflare Images through the `IMAGES` binding.
 ## How it works
 
 - **Pages:** home (the ERP banners with the headline over their clear left side,
-  category cards, all products),
+  then all products),
   `/catalog` (category chips, search results, sort), `/product/[id]`, `/cart`,
   `/checkout`, `/account`, `/privacy`.
+- **Categories** open from the header's menu button as a sheet from the left,
+  like the cart's sheet from the right (`ShopOverlays.tsx`).
+- **Scroll animation** (after bekplast.uz): product cards drop in from 100px
+  above as they come into view, the first row on page load and the rest as
+  the visitor scrolls, 160ms apart along a row (`RevealList.tsx`). Cards
+  arrive hidden from the server; if scripts never run, a CSS fallback shows
+  them after 2.5s. Off with reduced motion.
 - **Product cards** (bekplast.uz layout): the photo fills a square, then the
   name, the price, and a quantity stepper with "Savatga". 4 per row on
   desktop, 3 on tablets, 2 on phones; pages run wide with small side gaps.
@@ -91,7 +98,7 @@ Brand, phone numbers and the pickup address are not in the API. They go in
 src/
 ├── app/                routes only: layout, pages, loading/error/not-found, api/, robots, sitemap
 ├── features/
-│   ├── home/           Hero, HeroBanners, CategoryCards, ProductSection
+│   ├── home/           Hero, HeroBanners, ProductSection
 │   ├── catalog/        SortSelect, URL params
 │   ├── product/        ProductDetail, Gallery, OptionPicker, BuyBox, SpecTable
 │   ├── cart/           CartView, CartLine
@@ -99,7 +106,7 @@ src/
 │   └── account/        AccountView, LoginForm, CustomerPortal
 ├── components/
 │   ├── layout/         Header, SearchBox, CartButton, NavActions, ShopOverlays (cart sheet), Footer, Breadcrumbs
-│   ├── product/        ProductCard, ProductGrid
+│   ├── product/        ProductCard, ProductGrid, RevealList
 │   └── ui/             Button, Container, Dialog, Stepper, Segmented, Price, SafeImage, ...
 ├── config/             brand and contact details
 ├── lib/

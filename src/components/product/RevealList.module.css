@@ -1,0 +1,41 @@
+/*
+ * bekplast.uz's drop-in: from 100px above and transparent, 0.5s, a soft stop,
+ * 160ms apart along a row (the delay comes from RevealList).
+ */
+
+/* As the server sends it. If scripts never take over, it shows after 2.5s. */
+.pending {
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: fallback 0.5s cubic-bezier(0.19, 1, 0.22, 1) 2.5s forwards;
+}
+
+/* Waiting for the visitor to scroll to it. */
+.hidden {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1) var(--reveal-delay, 0ms),
+    transform 0.5s cubic-bezier(0.19, 1, 0.22, 1) var(--reveal-delay, 0ms);
+}
+
+@keyframes fallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pending,
+  .hidden {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

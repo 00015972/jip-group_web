@@ -1,16 +1,78 @@
 "use client";
 
-import { ShoppingCart } from "lucide-react";
+import { ChevronRight, LayoutGrid, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Dialog } from "@/components/ui/Dialog";
+import { SafeImage } from "@/components/ui/SafeImage";
 import { CartLine } from "@/features/cart/CartLine";
 import { totalsInput } from "@/lib/cart/lines";
 import { useCart } from "@/lib/cart/useCart";
+import { productsInCategory } from "@/lib/storefront/catalog";
+import { useCatalog } from "@/lib/storefront/CatalogProvider";
 import { groupTotal } from "@/lib/storefront/currency";
 
 import styles from "./ShopOverlays.module.css";
 import { useShopUi } from "./ShopUi";
+
+/**
+ * The categories, sliding in from the left like the cart does from the
+ * right: all products first, then each top category with its picture and
+ * count, and any subcategories under it.
+ */
+function CategorySheet() {
+  const { close } = useShopUi();
+  const { categories, categoryImages, products } = useCatalog();
+  const tops = categories.filter((c) => !c.parentId);
+
+  return (
+    <Dialog title="Kategoriyalar" onClose={close} side="left">
+      <ul className={styles.categories}>
+        <li>
+          <Link href="/catalog" className={styles.category} onClick={close}>
+            <span className={`${styles.thumb} ${styles.allThumb}`}>
+              <LayoutGrid size={20} aria-hidden />
+            </span>
+            <span className={styles.categoryText}>
+              <span className={styles.categoryName}>Barcha mahsulotlar</span>
+              <span className={styles.categoryCount}>{products.length} ta mahsulot</span>
+            </span>
+            <ChevronRight size={18} className={styles.chevron} aria-hidden />
+          </Link>
+        </li>
+        {tops.map((top) => {
+          const children = categories.filter((c) => c.parentId === top.id);
+          return (
+            <li key={top.id}>
+              <Link href={`/catalog?category=${top.id}`} className={styles.category} onClick={close}>
+                <span className={styles.thumb}>
+                  <SafeImage src={categoryImages[top.id]} alt="" sizes="48px" />
+                </span>
+                <span className={styles.categoryText}>
+                  <span className={styles.categoryName}>{top.name}</span>
+                  <span className={styles.categoryCount}>{productsInCategory(products, top.id).length} ta mahsulot</span>
+                </span>
+                <ChevronRight size={18} className={styles.chevron} aria-hidden />
+              </Link>
+              {children.length > 0 && (
+                <ul className={styles.children}>
+                  {children.map((child) => (
+                    <li key={child.id}>
+                      <Link href={`/catalog?category=${child.id}`} onClick={close}>
+                        {child.name.split(" › ").at(-1)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </Dialog>
+  );
+}
 
 /** The cart over whatever page is open, with its total. */
 function CartSheet() {
@@ -67,5 +129,6 @@ function CartSheet() {
 
 export function ShopOverlays() {
   const { overlay } = useShopUi();
+  if (overlay === "catalog") return <CategorySheet />;
   return overlay === "cart" ? <CartSheet /> : null;
 }

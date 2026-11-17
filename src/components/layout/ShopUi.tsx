@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
-type Overlay = "cart" | null;
+type Overlay = "cart" | "catalog" | null;
 interface ShopUiValue {
   overlay: Overlay;
   open: (overlay: Exclude<Overlay, null>) => void;

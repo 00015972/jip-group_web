@@ -74,6 +74,12 @@
   animation-name: slide;
 }
 
+.side.left {
+  margin-right: auto;
+  margin-left: 0;
+  animation-name: slide-left;
+}
+
 @keyframes enter {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: none; }
@@ -81,6 +87,11 @@
 
 @keyframes slide {
   from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(-24px); }
   to { opacity: 1; transform: none; }
 }
 
