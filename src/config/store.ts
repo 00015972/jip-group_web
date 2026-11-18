@@ -14,7 +14,7 @@ export const FALLBACK_CURRENCY = "so'm";
 
 export const STORE_CONTACT = {
   /** Shown in the footer, checkout and privacy page. */
-  phones: ["+998 94 472 00 17", "+998 95 842 11 11"] as string[],
+  phones: ["+998 94 472 00 17", "+998 95 842 11 11", "+998 90 992 17 77"] as string[],
   /** Where pickup orders are collected. */
   address: "Chinnibozor 1 qator 16 do‘kon",
   /** A landmark for the address, e.g. "Dehqon bozori yonida". */
