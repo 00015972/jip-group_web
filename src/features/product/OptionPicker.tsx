@@ -1,5 +1,6 @@
 "use client";
 
+import { colourSwatches } from "@/lib/product/colours";
 import type { BuyOption } from "@/lib/product/options";
 import { fmtNumber, money } from "@/lib/storefront/currency";
 
@@ -23,11 +24,12 @@ export function OptionPicker({
   const variants = options.some((o) => o.variantId);
   const base = options.find((o) => o.multiplier === 1) ?? options[0];
   const selected = options.find((o) => o.key === selectedKey);
+  const colours = variants ? colourSwatches(options) : null;
 
   return (
     <fieldset className={styles.picker}>
       <legend className={styles.legend}>
-        {variants ? "O‘lcham / turi" : "Qanday sotib olasiz"}
+        {colours ? "Rang" : variants ? "O‘lcham / turi" : "Qanday sotib olasiz"}
         {selected && <span className={styles.current}>: {selected.label}</span>}
       </legend>
       <div className={styles.chips} role="radiogroup">
@@ -41,7 +43,10 @@ export function OptionPicker({
             disabled={!option.inStock}
             onClick={() => onSelect(option)}
           >
-            <span className={styles.label}>{option.label}</span>
+            <span className={styles.label}>
+              {colours && <span className={styles.swatch} style={{ background: colours.get(option)?.swatch ?? undefined }} aria-hidden />}
+              {colours?.get(option)?.label ?? option.label}
+            </span>
             {!variants && option.multiplier !== 1 && (
               <span className={styles.sub}>
                 {fmtNumber(option.multiplier)} {base.unit}

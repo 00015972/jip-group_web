@@ -108,6 +108,8 @@ export interface Product {
   /** ERP product class; empty for ordinary goods. */
   product_type: string;
   attributes: ProductAttributes;
+  /** Position set in the ERP, lowest first; the storefront lists products in this order. */
+  sort_order?: number | null;
 }
 
 export interface CategoryImage {

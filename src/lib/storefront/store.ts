@@ -54,13 +54,28 @@ function summarize(info: StoreInfo): StoreSummary {
 }
 
 /**
+ * Products in the order set in the ERP (`sort_order`, lowest first). The API
+ * already sends them that way; sorting here keeps it true if it ever doesn't.
+ * Rows without a position go last, and ties keep the API's order.
+ */
+function byErpOrder(products: Product[]): Product[] {
+  const position = (p: Product) =>
+    typeof p.sort_order === "number" && Number.isFinite(p.sort_order) ? p.sort_order : Infinity;
+  return [...products].sort((a, b) => {
+    const pa = position(a);
+    const pb = position(b);
+    return pa === pb ? 0 : pa < pb ? -1 : 1;
+  });
+}
+
+/**
  * Image URLs arrive absolute (the CDN) or relative to the API host; resolving
  * them here means components only ever see absolute URLs. Categories are
  * normalized here too, so every page reads the same two-level tree.
  */
 function view(raw: CatalogResponse): CatalogView {
   const products = normalizeCategories(
-    (raw.results ?? []).map((product) => ({
+    byErpOrder(raw.results ?? []).map((product) => ({
       ...product,
       name: product.name?.trim() || "Nomsiz mahsulot",
       image: media(product.image),
